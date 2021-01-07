@@ -1,5 +1,4 @@
 import processing.core.PApplet;
-
 class Circle {
     private static float diameter= 20;
     private float x;
@@ -11,7 +10,7 @@ class Circle {
         this.y = y;
     }
 
-    public void drawCircle(PApplet pApplet)
+    void drawCircle(PApplet pApplet)
     {
         pApplet.ellipse(x,y,diameter,diameter);
     }
@@ -23,7 +22,6 @@ public class ProcessingOOP extends PApplet{
     private static final int HEIGHT = 1000;
     private int noOfCircles = 4;
     private int[] xCoordinates;
-    private static final float diameter= 20;
 
     public static void main(String[] args)
     {
