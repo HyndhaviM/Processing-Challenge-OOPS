@@ -1,11 +1,29 @@
 import processing.core.PApplet;
+
+class Circle {
+    private static float diameter= 20;
+    private float x;
+    private float y;
+
+    public Circle(float x, float y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void drawCircle(PApplet pApplet)
+    {
+        pApplet.ellipse(x,y,diameter,diameter);
+    }
+}
+
 public class ProcessingOOP extends PApplet{
 
-    public static final int WIDTH = 1000;
-    public static final int HEIGHT = 1000;
-    public int noOfEllipses = 4;
-    public int[] xEllipses;
-    public static final float diameter= 20;
+    private static final int WIDTH = 1000;
+    private static final int HEIGHT = 1000;
+    private int noOfCircles = 4;
+    private int[] xCoordinates;
+    private static final float diameter= 20;
 
     public static void main(String[] args)
     {
@@ -22,40 +40,22 @@ public class ProcessingOOP extends PApplet{
     public void setup() {
         super.setup();
         //initializing x coordinate for each circle
-        xEllipses = new int[noOfEllipses];
-        for(int i=0;i<noOfEllipses;i++)
+        xCoordinates = new int[noOfCircles];
+        for(int i=0;i<noOfCircles;i++)
         {
-            xEllipses[i]=1;
+            xCoordinates[i]=1;
         }
     }
 
     @Override
     public void draw() {
-        for(int i=0;i<noOfEllipses;i++)
+        for(int i=0;i<noOfCircles;i++)
         {
-           Circle circle = new Circle(xEllipses[i],(i+1)*HEIGHT/5, diameter);
-           circle.drawCircle();
-           xEllipses[i]+=(i+1); //updating x coordinate for circle to draw at respective place (appears to be speed)
+           Circle circle = new Circle(xCoordinates[i],(i+1)*HEIGHT/5);
+           circle.drawCircle(this);
+           xCoordinates[i]+=(i+1); //updating x coordinate for circle to draw at respective place (appears to be speed)
         }
 
-    }
-
-    class Circle {
-        public float diameter= 20;
-        public float x;
-        public float y;
-
-        public Circle(float x, float y, float diameter)
-        {
-            this.x = x;
-            this.y = y;
-            this.diameter = diameter;
-        }
-
-        public void drawCircle()
-        {
-            ellipse(x,y,diameter,diameter);
-        }
     }
 
 }
